@@ -55,6 +55,7 @@ seeu is a bash based script which is officially made for hacking cameras of devi
 
 * `apt-get update -y`
 * `apt-get upgrade -y`
+* `termux-setup-storage`
 * `pkg install curl -y`
 * `pkg install wget -y`
 * `pkg install git -y`
