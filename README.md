@@ -93,8 +93,8 @@ __EXIT__ :
 
 <br>
 <p align="center">
-<img width="45%" src="https://user-images.githubusercontent.com/49580304/131512973-1531a7cf-9245-42cb-be26-e9df01fbdf7d.jpg"/>
-<img width="50%" src="https://user-images.githubusercontent.com/49580304/131512982-8487f686-8a1f-4337-a261-4dd5af69c946.jpg"/>
+<img width="45%" src="https://user-images.githubusercontent.com/49580304/133480781-b38229d9-f02d-43ac-bdf4-8defc4e3e7cd.jpg"/>
+<img width="50%" src="https://user-images.githubusercontent.com/49580304/133480898-c3f8de10-eb77-44a2-b582-92a59993f7fe.jpg"/>
 </p>
 
 ## WATCH VIDEO [Termux]
