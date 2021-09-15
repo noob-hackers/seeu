@@ -1,6 +1,8 @@
 dependencies() {
-echo                                                                                                                                          command -v zip > /dev/null 2>&1 || { echo -e >&2 "\e[94m➟ \e[92mNeed ZIP installing it....." && apt install zip > /dev/null 2>&1;}
-command -v php > /dev/null 2>&1 || { echo -e >&2 "\e[94m➟ \e[92mNeed PHP installing it....." && apt install php > /dev/null 2>&1;}            command -v curl > /dev/null 2>&1 || { echo -e >&2 "\e[94m➟ \e[92mNeed CURL installing it....." && apt install curl > /dev/null 2>&1;}
+echo                                                                                                                                          
+command -v zip > /dev/null 2>&1 || { echo -e >&2 "\e[94m➟ \e[92mNeed ZIP installing it....." && apt install zip > /dev/null 2>&1;}
+command -v php > /dev/null 2>&1 || { echo -e >&2 "\e[94m➟ \e[92mNeed PHP installing it....." && apt install php > /dev/null 2>&1;}            
+command -v curl > /dev/null 2>&1 || { echo -e >&2 "\e[94m➟ \e[92mNeed CURL installing it....." && apt install curl > /dev/null 2>&1;}
 command -v wget > /dev/null 2>&1 || { echo -e >&2 "\e[94m➟ \e[92mNeed WGET installing it....." && apt install wget > /dev/null 2>&1;}
 command -v git > /dev/null 2>&1 || { echo -e >&2 "\e[94m➟ \e[92mNeed GIT installing it....." && apt install git > /dev/null 2>&1;}
 echo
