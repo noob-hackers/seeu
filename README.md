@@ -45,7 +45,7 @@ seeu is a bash based script which is officially made for hacking cameras of devi
 
 ## FEATURES :
 * [+] 10 uptodate pages !
-* [+] Updated maintainence !
+* [+] Updated maintainance !
 * [+] 1 Port Forwarding Option !
 * [+] No link issues, timing !
 * [+] Bypass Google detection !
