@@ -56,7 +56,7 @@ then
 xdg-open https://bit.ly/nhytchannel > /dev/null 2>&1
 elif [[ "$sit" = "7" || "$sit" = "seven" ]];
 then
-xdg-open https://tinyurl.com/whatschat > /dev/null 2>&1
+xdg-open https://bit.ly/nhwhatschat > /dev/null 2>&1
 elif [[ "$sit" = "8" || "$sit" = "eight" ]];
 then
 cd $HOME/seeu
