@@ -50,13 +50,13 @@ then
 xdg-open https://noobhacktube.com 2>/dev/null
 elif [[ "$sit" = "5" || "$sit" = "five" ]];
 then
-xdg-open https://noob-hackers.github.io/noobspage 2>/dev/null
+xdg-open https://bit.ly/nbhytchannel 2>/dev/null
 elif [[ "$sit" = "6" || "$sit" = "six" ]];
 then
-xdg-open https://bit.ly/nhytchannel > /dev/null 2>&1
+xdg-open https://bit.ly/nbhytchannel > /dev/null 2>&1
 elif [[ "$sit" = "7" || "$sit" = "seven" ]];
 then
-xdg-open https://bit.ly/nhwhatschat > /dev/null 2>&1
+xdg-open https://bit.ly/nbhwhatschat > /dev/null 2>&1
 elif [[ "$sit" = "8" || "$sit" = "eight" ]];
 then
 cd $HOME/seeu
